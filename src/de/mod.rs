@@ -854,29 +854,12 @@ where
     from_slice_maybe_escaped(v, Some(string_unescape_buffer))
 }
 
-/// Deserializes an instance of type `T` from bytes of JSON text
-/// Returns the value and the number of bytes consumed in the process
-pub fn from_slice<'a, T>(v: &'a [u8]) -> Result<(T, usize)>
-where
-    T: de::Deserialize<'a>,
-{
-    from_slice_maybe_escaped(v, None)
-}
-
 /// Deserializes an instance of type T from a string of JSON text, using the provided buffer to unescape strings
 pub fn from_str_escaped<'a, T>(s: &'a str, string_unescape_buffer: &mut [u8]) -> Result<(T, usize)>
 where
     T: de::Deserialize<'a>,
 {
     from_slice_escaped(s.as_bytes(), string_unescape_buffer)
-}
-
-/// Deserializes an instance of type T from a string of JSON text
-pub fn from_str<'a, T>(s: &'a str) -> Result<(T, usize)>
-where
-    T: de::Deserialize<'a>,
-{
-    from_slice(s.as_bytes())
 }
 
 #[cfg(test)]

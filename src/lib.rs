@@ -82,7 +82,7 @@ pub mod ser;
 pub mod str;
 
 #[doc(inline)]
-pub use self::de::{from_slice, from_slice_escaped, from_str, from_str_escaped};
+pub use self::de::{ from_slice_escaped,  from_str_escaped};
 #[doc(inline)]
 pub use self::ser::to_slice;
 #[cfg(feature = "heapless")]
